@@ -19,7 +19,7 @@ public class UsuarioRepositorio : IUsuarioRepositorio
         return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<List<usuarioModel>> BuscarTodosUsuarios()
+    public async Task<List<usuarioModel>> BuscarTodos()
     {
         return await _dbContext.Usuarios.ToListAsync();
     }

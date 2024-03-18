@@ -6,6 +6,6 @@ public class editoraModel
     public string nome { get; set; }
     public string localizacao { get; set; }
     public int anoFundacao { get; set; }
-    public ICollection<livroModel> livros { get; set; }
+    public ICollection<livroModel>? livros { get; set; }
 
 }

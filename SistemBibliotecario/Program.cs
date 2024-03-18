@@ -14,6 +14,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
+builder.Services.AddScoped<IAutorRepositorio, AutorRepositorio>();
+builder.Services.AddScoped<IEditoraRepositorio, EditorarRepositorio>();
+
 
 builder.Services.AddDbContext<bibliotecaDBContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))

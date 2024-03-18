@@ -4,7 +4,7 @@ namespace SistemBibliotecario.Repositorio.Interfaces;
 
 public interface IUsuarioRepositorio
 {
-    Task<List<usuarioModel>> BuscarTodosUsuarios();
+    Task<List<usuarioModel>> BuscarTodos();
     Task<usuarioModel> BuscarPorId(int id);
 
     Task<usuarioModel> Adicionar(usuarioModel usuario);

@@ -17,9 +17,9 @@ namespace SistemBibliotecario.Controllers;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<usuarioModel>>> BuscarTodosUsuarios()
+        public async Task<ActionResult<List<usuarioModel>>> BuscarTodos()
         {
-            List<usuarioModel> usuarios = await _usuariosRepositorios.BuscarTodosUsuarios();
+            List<usuarioModel> usuarios = await _usuariosRepositorios.BuscarTodos();
             return Ok(usuarios);
         }
 
