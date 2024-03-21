@@ -1,1 +1,1 @@
-Projeto FormativaAPI - Criação de uma API com verificação JWT em C#
+Projeto FormativaAPI - Criação de uma Api com proteção através de token JWT
