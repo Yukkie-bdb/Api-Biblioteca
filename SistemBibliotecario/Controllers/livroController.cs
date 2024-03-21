@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemBibliotecario.Repositorio.Interfaces;
 using SistemBibliotecario.Models;
 
 namespace SistemBibliotecario.Controllers;
 
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class livroController : ControllerBase

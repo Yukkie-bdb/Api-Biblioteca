@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemBibliotecario.Data;
 
@@ -11,9 +12,11 @@ using SistemBibliotecario.Data;
 namespace SistemBibliotecario.Migrations
 {
     [DbContext(typeof(bibliotecaDBContext))]
-    partial class bibliotecaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240321114304_Reserva e Avaliacao")]
+    partial class ReservaeAvaliacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemBibliotecario.Data;
 
@@ -11,9 +12,11 @@ using SistemBibliotecario.Data;
 namespace SistemBibliotecario.Migrations
 {
     [DbContext(typeof(bibliotecaDBContext))]
-    partial class bibliotecaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240321110653_Emprestimo")]
+    partial class Emprestimo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,44 +50,6 @@ namespace SistemBibliotecario.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Autores");
-                });
-
-            modelBuilder.Entity("SistemBibliotecario.Models.avaliacaoModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("comentario")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateOnly>("dataAvaliacao")
-                        .HasMaxLength(255)
-                        .HasColumnType("date");
-
-                    b.Property<int>("livroId")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
-                    b.Property<int>("pontuacao")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
-                    b.Property<int>("usuarioId")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("livroId");
-
-                    b.HasIndex("usuarioId");
-
-                    b.ToTable("Avaliacoes");
                 });
 
             modelBuilder.Entity("SistemBibliotecario.Models.editoraModel", b =>
@@ -191,39 +156,6 @@ namespace SistemBibliotecario.Migrations
                     b.ToTable("Livros");
                 });
 
-            modelBuilder.Entity("SistemBibliotecario.Models.reservaModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateOnly>("dataReserva")
-                        .HasMaxLength(255)
-                        .HasColumnType("date");
-
-                    b.Property<int>("livroId")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
-                    b.Property<int>("status")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
-                    b.Property<int>("usuarioId")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("livroId");
-
-                    b.HasIndex("usuarioId");
-
-                    b.ToTable("Reservas");
-                });
-
             modelBuilder.Entity("SistemBibliotecario.Models.usuarioModel", b =>
                 {
                     b.Property<int>("Id")
@@ -245,25 +177,6 @@ namespace SistemBibliotecario.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("SistemBibliotecario.Models.avaliacaoModel", b =>
-                {
-                    b.HasOne("SistemBibliotecario.Models.livroModel", "livro")
-                        .WithMany()
-                        .HasForeignKey("livroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SistemBibliotecario.Models.usuarioModel", "usuario")
-                        .WithMany()
-                        .HasForeignKey("usuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("livro");
-
-                    b.Navigation("usuario");
                 });
 
             modelBuilder.Entity("SistemBibliotecario.Models.emprestimoModel", b =>
@@ -290,25 +203,6 @@ namespace SistemBibliotecario.Migrations
                     b.HasOne("SistemBibliotecario.Models.editoraModel", null)
                         .WithMany("livros")
                         .HasForeignKey("editoraModelId");
-                });
-
-            modelBuilder.Entity("SistemBibliotecario.Models.reservaModel", b =>
-                {
-                    b.HasOne("SistemBibliotecario.Models.livroModel", "livro")
-                        .WithMany()
-                        .HasForeignKey("livroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SistemBibliotecario.Models.usuarioModel", "usuario")
-                        .WithMany()
-                        .HasForeignKey("usuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("livro");
-
-                    b.Navigation("usuario");
                 });
 
             modelBuilder.Entity("SistemBibliotecario.Models.editoraModel", b =>
